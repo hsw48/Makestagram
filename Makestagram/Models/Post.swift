@@ -9,19 +9,22 @@
 
 import Foundation
 import Parse
+import Bond
 
-// 1
+
 class Post : PFObject, PFSubclassing {
     
-    // 2
-    @NSManaged var imageFile: PFFile?
+    var image: Observable<UIImage?> = Observable(nil)
+    var likes: Observable<[PFUser]?> = Observable(nil)
+    
+    
     @NSManaged var user: PFUser?
-    var image: UIImage?
+    @NSManaged var imageFile: PFFile?
     
     var photoUploadTask : UIBackgroundTaskIdentifier?
     
     func uploadPost() {
-        if let image = image {
+        if let image = image.value {
             guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {return}
             guard let imageFile = PFFile(name: "image.jpg",data: imageData) else {return}
             
@@ -37,17 +40,57 @@ class Post : PFObject, PFSubclassing {
         }
     }
     
+    func fetchLikes() {
+        if likes.value != nil {
+            return
+        }
+        ParseHelper.likesForPost(self, completionBlock:{ (likes: [PFObject]?, error: NSError?) -> Void in
+            let validLikes = likes?.filter { like in like[ParseHelper.ParseLikeFromUser] != nil }
+            self.likes.value = validLikes?.map { like in
+                let fromUser = like[ParseHelper.ParseLikeFromUser] as! PFUser
+                return fromUser
+        
+            }
+        })
+    }
     
     
     
-    //MARK: PFSubclassing Protocol
+    func doesUserLikePost(user: PFUser) -> Bool {
+        if let likes = likes.value {
+            return likes.contains(user)
+        } else {
+            return false
+        }
+    }
     
-    // 3
+    func toggleLikePost(user: PFUser) {
+        if (doesUserLikePost(user)) {
+            likes.value = likes.value?.filter { $0 != user }
+            ParseHelper.unlikePost(user, post: self)
+        } else {
+            likes.value?.append(user)
+            ParseHelper.likePost(user, post: self)
+        }
+    }
+    
+    func downloadImage() {
+        if image.value == nil {
+            imageFile?.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) -> Void in
+                if let data = data {
+                    let image = UIImage(data: data, scale: 1.0)!
+                    
+                    self.image.value = image
+                }
+            })
+        }
+    }
+    
     static func parseClassName() -> String {
         return "Post"
     }
     
-    // 4
+   
     override init () {
         super.init()
     }

@@ -15,13 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    let acl = PFACL()
-    acl.publicReadAccess = true
-    PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
-
+  
     
     // Set up Parse SDK
     let configuration = ParseClientConfiguration {
@@ -41,6 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } else {
         print("Login unsuccessful")
     }
+    
+    let acl = PFACL()
+    acl.publicReadAccess = true
+    PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
     
     return true
   }

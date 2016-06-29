@@ -37,6 +37,8 @@
 		846B95FC1D21A03E00FA8830 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B95FB1D21A03E00FA8830 /* FriendSearchViewController.swift */; };
 		846B96011D21A54800FA8830 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B96001D21A54800FA8830 /* PhotoTakingHelper.swift */; };
 		84D9071D1D21DF6600364B93 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D9071C1D21DF6600364B93 /* Post.swift */; };
+		84D907211D22E7DF00364B93 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D907201D22E7DF00364B93 /* PostTableViewCell.swift */; };
+		84D907231D22EF6200364B93 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D907221D22EF6200364B93 /* ParseHelper.swift */; };
 		99DB41747E3A9B32DAF9F486 /* Pods_MakestagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589D7AFD802EFF7C684F2F33 /* Pods_MakestagramTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,8 @@
 		846B95FB1D21A03E00FA8830 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
 		846B96001D21A54800FA8830 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		84D9071C1D21DF6600364B93 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		84D907201D22E7DF00364B93 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		84D907221D22EF6200364B93 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		CBE3B345314E0F07ABC563F1 /* Pods-MakestagramTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakestagramTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MakestagramTests/Pods-MakestagramTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D21642E94D90D3E42BC77CB6 /* Pods-MakestagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakestagramTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MakestagramTests/Pods-MakestagramTests.release.xcconfig"; sourceTree = "<group>"; };
 		E90EF6307DCCDD1C8928B547 /* Pods-Makestagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Makestagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Makestagram/Pods-Makestagram.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			children = (
 				6277189D1B0A58E800AF5C6E /* ErrorHandling.swift */,
 				6277189E1B0A58E800AF5C6E /* ParseLoginHelper.swift */,
+				84D907221D22EF6200364B93 /* ParseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 		62C8C1E21B06BD6500DC3EA7 /* Makestagram */ = {
 			isa = PBXGroup;
 			children = (
+				84D9071E1D22E7B300364B93 /* Views */,
 				84D9071B1D21DF4400364B93 /* Models */,
 				846B95FF1D21A4F100FA8830 /* PhotoTaking */,
 				6277189C1B0A58E800AF5C6E /* Helpers */,
@@ -271,6 +277,22 @@
 				84D9071C1D21DF6600364B93 /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		84D9071E1D22E7B300364B93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84D9071F1D22E7B300364B93 /* Timeline */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84D9071F1D22E7B300364B93 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				84D907201D22E7DF00364B93 /* PostTableViewCell.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		D5AC80CB111FD63A4816B224 /* Pods */ = {
@@ -503,6 +525,8 @@
 				846B95FA1D21A02A00FA8830 /* PhotoViewController.swift in Sources */,
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
+				84D907231D22EF6200364B93 /* ParseHelper.swift in Sources */,
+				84D907211D22E7DF00364B93 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
